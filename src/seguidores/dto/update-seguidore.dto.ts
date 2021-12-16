@@ -1,4 +1,4 @@
 import { PartialType } from '@nestjs/mapped-types';
-import { CreateSeguidoreDto } from './create-seguidore.dto';
+import { CreateSeguidorDto } from './create-seguidore.dto';
 
-export class UpdateSeguidoreDto extends PartialType(CreateSeguidoreDto) {}
+export class UpdateSeguidorDto extends PartialType(CreateSeguidorDto) {}
