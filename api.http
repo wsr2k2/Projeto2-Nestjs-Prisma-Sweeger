@@ -1,0 +1,42 @@
+# LISTAR TODOS usuários:
+GET http://localhost:3000/usuarios
+###
+
+# LISTAR UM usuário por ID:
+GET http://localhost:3000/usuarios/1
+###
+
+# CADASTRAR um novo usuário:
+POST http://localhost:3000/usuarios
+Content-Type: application/json
+
+{
+    "nome":"Felipe",
+    "imagem":"fotoFelipe.jpg",
+    "bio":"criança com muita energia e alegria",
+    "nascimento":"31/07/2014",
+    "criado_em":"2021-12-16T09:45:30.451Z",
+    "modificado_em":"2021-12-16T09:45:30.451Z"
+
+}
+###
+
+# ALTERAR um usuário por ID:
+# Observações: no PATCH pode ser alterado apenas 1 campo ou todos eles.
+PATCH  http://localhost:3000/usuarios/1
+Content-Type: application/json
+
+{
+    "nome":"Felipe",
+    "imagem":"fotoFelipe.jpg",
+    "bio":"criança com muita energia e alegria",
+    "nascimento":"31/07/2014",
+    "criado_em":"2021-12-16T09:45:30.451Z",
+    "modificado_em":"2021-12-16T09:45:30.451Z"
+
+}
+###
+
+# EXCLUIR usuário por ID:
+DELETE http://localhost:3000/usuarios/1
+###
