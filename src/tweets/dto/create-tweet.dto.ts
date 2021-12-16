@@ -1,4 +1,4 @@
-import { IsInt, IsNotEmpty, IsString, Max } from 'class-validator';
+import { IsDate, IsInt, IsNotEmpty, IsString, Max } from 'class-validator';
 
 /* eslint-disable @typescript-eslint/ban-types */
 export class CreateTweetDto {
@@ -7,17 +7,21 @@ export class CreateTweetDto {
   @IsNotEmpty()
   @IsString()
   @Max(280)
-  texto: String;
+  texto: string;
 
   @IsNotEmpty()
   @IsString()
-  emoji: String;
+  emoji: string;
 
   @IsNotEmpty()
-  @IsString()
-  data_postagem: String;
+  @IsDate()
+  data_postagem: Date;
 
   @IsNotEmpty()
   @IsInt()
   curtidas: number;
+
+  @IsNotEmpty()
+  @IsInt()
+  usuarioid: number;
 }

@@ -20,7 +20,7 @@ export class CreateUsuarioDto {
   nascimento: string;
 
   @IsNotEmpty()
-  @IsString()
+  @IsDate()
   criado_em: Date;
 
   @IsNotEmpty()
