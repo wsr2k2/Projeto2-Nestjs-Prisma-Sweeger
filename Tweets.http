@@ -1,0 +1,37 @@
+# LISTAR TODOS tweets:
+GET http://localhost:3000/tweets
+###
+
+# LISTAR UM tweet por ID:
+GET http://localhost:3000/tweets/1
+###
+
+# CADASTRAR um novo tweet:
+POST http://localhost:3000/tweets
+Content-Type: application/json
+
+{
+    "texto":"Olá, tudo bem?",
+    "emoji":":)",
+    "curtidas": 1,
+    "usuarioid": 3
+}
+###
+
+# ALTERAR um tweet por ID:
+# Observações: no PATCH pode ser alterado apenas 1 campo ou todos eles.
+PATCH  http://localhost:3000/tweets/1
+Content-Type: application/json
+
+{
+    "texto":"Olá, tudo bem?",
+    "emoji":":)",
+    "data_postagem":"2021-12-16T09:45:30.451Z",
+    "curtidas": 1,
+    "usuarioid": 3
+}
+###
+
+# EXCLUIR tweet por ID:
+DELETE http://localhost:3000/tweets/1
+###

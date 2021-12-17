@@ -3,7 +3,7 @@ GET http://localhost:3000/usuarios
 ###
 
 # LISTAR UM usuário por ID:
-GET http://localhost:3000/usuarios/1
+GET http://localhost:3000/usuarios/3
 ###
 
 # CADASTRAR um novo usuário:
@@ -14,10 +14,7 @@ Content-Type: application/json
     "nome":"Felipe",
     "imagem":"fotoFelipe.jpg",
     "bio":"criança com muita energia e alegria",
-    "nascimento":"31/07/2014",
-    "criado_em":"2021-12-16T09:45:30.451Z",
-    "modificado_em":"2021-12-16T09:45:30.451Z"
-
+    "nascimento":"31/07/2014"
 }
 ###
 
@@ -27,16 +24,13 @@ PATCH  http://localhost:3000/usuarios/1
 Content-Type: application/json
 
 {
-    "nome":"Felipe",
-    "imagem":"fotoFelipe.jpg",
-    "bio":"criança com muita energia e alegria",
-    "nascimento":"31/07/2014",
-    "criado_em":"2021-12-16T09:45:30.451Z",
-    "modificado_em":"2021-12-16T09:45:30.451Z"
-
+    "nome":"William Rodrigues",
+    "imagem":"william.jpg",
+    "bio":"novo no mundo da programação",
+    "nascimento":"08/01/1982"
 }
 ###
 
 # EXCLUIR usuário por ID:
-DELETE http://localhost:3000/usuarios/1
+DELETE http://localhost:3000/usuarios/7
 ###

@@ -1,0 +1,17 @@
+# LISTAR Auth:
+GET http://localhost:3000/auth
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJub21lIjoiRmVsaXBlIiwiaWF0IjoxNjM5NzA0MTcyLCJleHAiOjE2Mzk3MDQyMzJ9.bya1t0ZJc5qVcAmB1Nm7823torURMPl4A5VHmm9I2pM
+
+###
+
+# LISTAR Auth:
+POST http://localhost:3000/auth
+Content-Type: application/json
+
+{
+    "nome":"Felipe"
+}
+
+###
+

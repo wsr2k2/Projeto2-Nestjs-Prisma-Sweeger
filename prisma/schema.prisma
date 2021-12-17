@@ -18,8 +18,8 @@ model Usuario {
   nascimento      String
   seguidores      Seguidores []
   seguindo        Seguindo []
-  criado_em       DateTime @default(now()) @map(name: "criado_em")
-  modificado_em   DateTime @updatedAt @map(name: "modificado_em")
+  criado_em       DateTime @default(now()) @map(name: "created_at")
+  modificado_em   DateTime @updatedAt @map(name: "updated_at")
   tweet           Tweet[]
 }
 
@@ -41,7 +41,7 @@ model Tweet {
   id              Int   @default(autoincrement()) @id
   texto           String @db.VarChar(280)
   emoji           String 
-  data_postagem   DateTime @default(now()) @map(name: "postado_em")
+  data_postagem   DateTime @default(now()) @map(name: "created_at")
   curtidas        Int
   usuarios        Usuario []
   usuarioid       Int
