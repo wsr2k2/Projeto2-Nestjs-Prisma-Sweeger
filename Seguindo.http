@@ -1,0 +1,32 @@
+# LISTAR TODOS Seguindo:
+GET http://localhost:3000/seguindo
+###
+
+# LISTAR UM seguindo por ID:
+GET http://localhost:3000/seguindo/1
+###
+
+# CADASTRAR um novo seguindo:
+POST http://localhost:3000/seguindo
+Content-Type: application/json
+
+{
+    "idseguindo": 1,
+    "usuarioid": 3
+}
+###
+
+# ALTERAR um seguindo por ID:
+# Observações: no PATCH pode ser alterado apenas 1 campo ou todos eles.
+PATCH  http://localhost:3000/seguindo/1
+Content-Type: application/json
+
+{
+    "idseguindo": 1,
+    "usuarioid": 3
+}
+###
+
+# EXCLUIR seguidor por ID:
+DELETE http://localhost:3000/seguidores/1
+###

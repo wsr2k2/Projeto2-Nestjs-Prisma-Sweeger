@@ -1,0 +1,32 @@
+# LISTAR TODOS Seguidores:
+GET http://localhost:3000/seguidores
+###
+
+# LISTAR UM seguidor por ID:
+GET http://localhost:3000/seguidores/1
+###
+
+# CADASTRAR um novo seguidor:
+POST http://localhost:3000/seguidores
+Content-Type: application/json
+
+{
+    "idseguidor": 1,
+    "usuarioid": 3
+}
+###
+
+# ALTERAR um seguidor por ID:
+# Observações: no PATCH pode ser alterado apenas 1 campo ou todos eles.
+PATCH  http://localhost:3000/seguidores/1
+Content-Type: application/json
+
+{
+    "idseguidor": 1,
+    "usuarioid": 3
+}
+###
+
+# EXCLUIR seguidor por ID:
+DELETE http://localhost:3000/seguidores/1
+###
