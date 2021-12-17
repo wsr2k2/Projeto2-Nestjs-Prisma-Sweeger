@@ -89,7 +89,7 @@ model Tweet {
 }
 ```
 
-***FOTO .ENV POSTGRESQL***
+(https://raw.githubusercontent.com/wsr2k2/Projeto2-Nestjs-Prisma-Sweeger/William/img/config%20env.png)
 
 Devemos agora configurar o arquivo .env com os dados de acesso ao PostgreSql e o nome do banco de dados do projeto.
 
