@@ -153,7 +153,7 @@ Criar dentro da pasta ``auth`` uma pasta ``dto`` e dentro dessa pasta um arquivo
 
 O arquivo ``jwt.strategy.ts`` deverá ficar parecido com a imagem abaixo:
 
-***FOTO ARQUIVO JWT.STRATEGY.TS***
+![alt jwt-strategy](https://github.com/wsr2k2/Projeto2-Nestjs-Prisma-Sweeger/blob/William/img/jwt-strategy.png?raw=true)
 
 Obs> onde é chamado o ``secretOrKey: process.env.SECRETKEY`` deve ser cadastrado no ``.env`` uma palavra-chave, no nosso caso ``SECRETKEY = "blue2021"``.
 
@@ -171,7 +171,9 @@ Após criar o ``usuário`` entrar no arquivo ``auth.http`` , se tentarmos listar
 
 ![alt nao_autorizado](https://github.com/wsr2k2/Projeto2-Nestjs-Prisma-Sweeger/blob/William/img/nao%20autorizado.png?raw=true)Para conseguir logar, deve ser gerado um token, para isso, utilizar a opção ``POST`` e como parâmetro passar o ``nome de usuário já cadastrado`` , exemplo aqui ``Usuário Teste`` e clicar em ``send request``
 
-![alt token_criado](https://github.com/wsr2k2/Projeto2-Nestjs-Prisma-Sweeger/blob/William/img/token%20criado.png?raw=true)Com o token já criado, basta colar o mesmo logo após ``Bearer`` e clicar em ``send request`` , deverá ser mostrado a seguinte tela:
+![alt token_criado](https://github.com/wsr2k2/Projeto2-Nestjs-Prisma-Sweeger/blob/William/img/token%20criado.png?raw=true)
+
+Com o token já criado, basta colar o mesmo logo após ``Bearer`` e clicar em ``send request`` , deverá ser mostrado a seguinte tela:
 
 ![alt logado](https://github.com/wsr2k2/Projeto2-Nestjs-Prisma-Sweeger/blob/William/img/logado.png?raw=true)Estrutura e dados esperados:
 
