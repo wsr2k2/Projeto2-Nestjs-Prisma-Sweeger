@@ -17,7 +17,7 @@ export class AuthService {
     const token = this._createToken(user);
     return {
       nome: user.nome,
-      ...token
+      ...token,
     };
   }
   private _createToken({ nome }: LoginDto): any {
@@ -26,6 +26,6 @@ export class AuthService {
     return {
       expiresIn: process.env.EXPIRESIN,
       accessToken,
-    }
+    };
   }
 }
