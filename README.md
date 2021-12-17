@@ -24,7 +24,7 @@ Em nosso caso: ``nest new Projeto2-Nestjs-Prisma-Sweeger`` escolhemos a opção 
 
 Após a criação do projeto, teremos uma estrutura parecida com a da foto abaixo:
 
-***PROJETO CRIADO***
+![alt projeto_criado](https://github.com/wsr2k2/Projeto2-Nestjs-Prisma-Sweeger/blob/William/img/cria%C3%A7%C3%A3o%20projeto.png?raw=true)
 
 Devemos instalar o Prisma também, com o comando:
 
@@ -134,13 +134,11 @@ Agora iremos estruturar nossos ``create.dto`` de cada resource, antes, devemos i
 
 Após a alteração no ``create-nome_resource.dto.ts``, ficando parecido como imagem abaixo:
 
-#### ***FOTO CREATE-DTO***
+#### ![alt create_dto](https://github.com/wsr2k2/Projeto2-Nestjs-Prisma-Sweeger/blob/William/img/create%20dto.png?raw=true)
 
 Após estruturar todos os resources, agora é hora de estruturar nossos ``.services``, responsáveis por buscar nossos requisições do CRUD nos arquivos ``controllers``, ficando parecido como imagem abaixo:
 
-***FOTO CRUD NO SERVICE***
-
-Vamos criar a pasta ``auth`` dentro de ``src`` onde iremos criar os seguintes arquivos: ``auth.module , auth.service , jwt.strategy`` responsáveis por tratar a entrada de dados de login, gerar o token para autorização de login.
+![alt crud_service](https://github.com/wsr2k2/Projeto2-Nestjs-Prisma-Sweeger/blob/William/img/crud%20service.png?raw=true)Vamos criar a pasta ``auth`` dentro de ``src`` onde iremos criar os seguintes arquivos: ``auth.module , auth.service , jwt.strategy`` responsáveis por tratar a entrada de dados de login, gerar o token para autorização de login.
 
 Após criar  a pasta ``auth`` execute os seguintes comandos: 
 
@@ -161,33 +159,21 @@ Obs> onde é chamado o ``secretOrKey: process.env.SECRETKEY`` deve ser cadastrad
 
 Para testes utilizamos nesse projeto uma extensão do próprio VsCode, a ``Rest Client`` sendo muito funcional e prática.
 
-***FOTO REST CLIENT***
-
-Foram criado os seguintes arquivos de testes: ``usuarios.http`` , ``auth.htpp`` , ``tweets.http``, ``seguidores.http``, ``seguindo.http``
+![alt rest_client](https://github.com/wsr2k2/Projeto2-Nestjs-Prisma-Sweeger/blob/William/img/rest%20client.png?raw=true)Foram criado os seguintes arquivos de testes: ``usuarios.http`` , ``auth.htpp`` , ``tweets.http``, ``seguidores.http``, ``seguindo.http``
 
 Abaixo como realizar a autenticação de login, sendo necessário o cadastro de ao menos 1 usuário previamente.
 
 ``cadastrando um novo usuário``:
 
-***FOTO USUARIO CRIADO***
-
-
+![alt novo_usuario](https://github.com/wsr2k2/Projeto2-Nestjs-Prisma-Sweeger/blob/William/img/novo%20usuario.png?raw=true)
 
 Após criar o ``usuário`` entrar no arquivo ``auth.http`` , se tentarmos listar os usuários, não será autorizado por falta do token, conforme imagem:
 
-***FOTO NAO AUTORIZADO***
+![alt nao_autorizado](https://github.com/wsr2k2/Projeto2-Nestjs-Prisma-Sweeger/blob/William/img/nao%20autorizado.png?raw=true)Para conseguir logar, deve ser gerado um token, para isso, utilizar a opção ``POST`` e como parâmetro passar o ``nome de usuário já cadastrado`` , exemplo aqui ``Usuário Teste`` e clicar em ``send request``
 
-Para conseguir logar, deve ser gerado um token, para isso, utilizar a opção ``POST`` e como parâmetro passar o ``nome de usuário já cadastrado`` , exemplo aqui ``Usuário Teste`` e clicar em ``send request``
+![alt token_criado](https://github.com/wsr2k2/Projeto2-Nestjs-Prisma-Sweeger/blob/William/img/token%20criado.png?raw=true)Com o token já criado, basta colar o mesmo logo após ``Bearer`` e clicar em ``send request`` , deverá ser mostrado a seguinte tela:
 
-***FOTO TOKEN***
-
-Com o token já criado, basta colar o mesmo logo após ``Bearer`` e clicar em ``send request`` , deverá ser mostrado a seguinte tela:
-
-***FOTO LOGADO***
-
-
-
-Estrutura e dados esperados:
+![alt logado](https://github.com/wsr2k2/Projeto2-Nestjs-Prisma-Sweeger/blob/William/img/logado.png?raw=true)Estrutura e dados esperados:
 
 ```javascript
 # USUARIOS
