@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 import { Module } from '@nestjs/common';
 import { SeguindoService } from './seguindo.service';
 import { SeguindoController } from './seguindo.controller';

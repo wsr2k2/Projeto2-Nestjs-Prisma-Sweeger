@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 import { HttpException, HttpStatus, Injectable } from '@nestjs/common';
 import { Usuario, Prisma } from '@prisma/client';
 import { JwtPayload } from 'src/auth/jwt.strategy';

@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/common';
 import { SeguidoresService } from './seguidores.service';
 import { CreateSeguidorDto } from './dto/create-seguidore.dto';

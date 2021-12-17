@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 import { IsDate, IsInt, IsNotEmpty, IsString, Max } from 'class-validator';
 
 /* eslint-disable @typescript-eslint/ban-types */
