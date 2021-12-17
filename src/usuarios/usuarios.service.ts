@@ -5,7 +5,6 @@ import { PrismaService } from 'src/prisma/prisma.service';
 import { CreateUsuarioDto } from './dto/create-usuario.dto';
 import { UpdateUsuarioDto } from './dto/update-usuario.dto';
 
-
 @Injectable()
 export class UsuariosService {
   constructor(private prisma: PrismaService) {}
