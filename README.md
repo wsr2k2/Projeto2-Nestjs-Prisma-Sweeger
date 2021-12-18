@@ -236,15 +236,15 @@ O comando para a instalação é: ``npm install --save @nestjs/swagger swagger-u
 
 Após a instalação iremos realizar alguma alterações no arquivo ``main.ts`` afim de quando executarmos nossa API ser chamado o Swagger automaticamente e para personalizar nossa API, o arquivo ficará como a seguir:
 
-![alt main] (https://github.com/wsr2k2/Projeto2-Nestjs-Prisma-Sweeger/blob/main/img/arquivo%20main.png?raw=true)
+![alt main](https://github.com/wsr2k2/Projeto2-Nestjs-Prisma-Sweeger/blob/main/img/arquivo%20main.png?raw=true)
 
 No arquivo ``create.dto.ts`` de cada resource, iremos inserir o ``decorator @ApiProperty()`` para que seja automaticamente gerado um modelo no formato .json como schema no Swagger quando rodarmos a nossa aplicação, assim facilitando ao usuário saber quais campos e que tipo de dados deve digitar para poder executar os endpoints, ficando como segue:
 
-![alt schema_swagger] (https://github.com/wsr2k2/Projeto2-Nestjs-Prisma-Sweeger/blob/main/img/schema%20swagger.png?raw=true)
+![alt schema_swagger](https://github.com/wsr2k2/Projeto2-Nestjs-Prisma-Sweeger/blob/main/img/schema%20swagger.png?raw=true)
 
 Agora iremos inicializar nossa aplicação e acessar o endereço ``localhost:3000/api`` sendo mostrado essa tela inicial:
 
-![alt API_Swagger] (https://github.com/wsr2k2/Projeto2-Nestjs-Prisma-Sweeger/blob/main/img/Swagger.png?raw=true)
+![alt API_Swagger](https://github.com/wsr2k2/Projeto2-Nestjs-Prisma-Sweeger/blob/main/img/Swagger.png?raw=true)
 
 Nesse endereço se encontram todos os resources separados por título e dentro de cada aba contém os endpoints ``GET`` ``POST`` ``PATCH`` ``DELETE``
 
@@ -252,23 +252,29 @@ Cada um tendo os seguintes endpoints: (exemplo utilizado rota USUARIOS)
 
 * ``GET`` Retornando todos os cadastros;
 
-  ![alt GET_usuarios] (https://github.com/wsr2k2/Projeto2-Nestjs-Prisma-Sweeger/blob/main/img/get%20usuarios.png?raw=true)
+  ![alt GET_usuarios](https://github.com/wsr2k2/Projeto2-Nestjs-Prisma-Sweeger/blob/main/img/get%20usuarios.png?raw=true)
+
+  
 
 * ``GET / ID`` Retornando um cadastro específico por ID;
 
-  ![alt GET_ID_usuarios] (https://github.com/wsr2k2/Projeto2-Nestjs-Prisma-Sweeger/blob/main/img/get%20ID%20usuarios.png?raw=true)
+  ![alt GET_ID_usuarios](https://github.com/wsr2k2/Projeto2-Nestjs-Prisma-Sweeger/blob/main/img/get%20ID%20usuarios.png?raw=true)
+
+  
 
 * ``POST`` Realizar um novo cadastro;
 
-  ![alt POST_usuarios] (https://github.com/wsr2k2/Projeto2-Nestjs-Prisma-Sweeger/blob/main/img/post%20usuarios.png?raw=true)
+  ![alt POST_usuarios](https://github.com/wsr2k2/Projeto2-Nestjs-Prisma-Sweeger/blob/main/img/post%20usuarios.png?raw=true)
+
+  
 
 * ``PATCH`` Alterar dados de um cadastro específico por ID;
 
-  ![alt PATCH_usuarios] (https://github.com/wsr2k2/Projeto2-Nestjs-Prisma-Sweeger/blob/main/img/Patch%20usuarios.png?raw=true)
+  ![alt PATCH_usuarios](https://github.com/wsr2k2/Projeto2-Nestjs-Prisma-Sweeger/blob/main/img/Patch%20usuarios.png?raw=true)
 
   
 
 * ``DELETE`` Excluir um cadastro específico por ID:
 
-  ![alt DEL_usuarios] (https://github.com/wsr2k2/Projeto2-Nestjs-Prisma-Sweeger/blob/main/img/del%20usuarios.png?raw=true)
+  ![alt DEL_usuarios](https://github.com/wsr2k2/Projeto2-Nestjs-Prisma-Sweeger/blob/main/img/del%20usuarios.png?raw=true)
 
