@@ -11,7 +11,9 @@ import {
 import { TweetsService } from './tweets.service';
 import { CreateTweetDto } from './dto/create-tweet.dto';
 import { UpdateTweetDto } from './dto/update-tweet.dto';
+import { ApiTags } from '@nestjs/swagger';
 
+@ApiTags('Tweets')
 @Controller('tweets')
 export class TweetsController {
   constructor(private readonly tweetsService: TweetsService) {}

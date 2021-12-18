@@ -3,7 +3,9 @@ import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/commo
 import { SeguindoService } from './seguindo.service';
 import { CreateSeguindoDto } from './dto/create-seguindo.dto';
 import { UpdateSeguindoDto } from './dto/update-seguindo.dto';
+import { ApiTags } from '@nestjs/swagger';
 
+@ApiTags('Seguindo')
 @Controller('seguindo')
 export class SeguindoController {
   constructor(private readonly seguindoService: SeguindoService) {}
