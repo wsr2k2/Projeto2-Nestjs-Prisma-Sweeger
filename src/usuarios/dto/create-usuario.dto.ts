@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 import { IsDate, IsNotEmpty, IsString } from 'class-validator';
 
 export class CreateUsuarioDto {
