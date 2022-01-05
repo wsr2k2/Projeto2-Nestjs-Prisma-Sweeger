@@ -6,6 +6,8 @@ import { AppModule } from './app.module';
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
 
+  await app.listen(process.env.PORT || 3000);
+
   const config = new DocumentBuilder()
     .setTitle('API-Twitter') // local onde pode ser colocado o nome do projeto
     .setDescription('Projeto 02 do modulo 04 da Blue. O projeto consiste em criar uma API para controle do Twitter, onde o usurio postará tweets e terá seguidores.') // pequena descrição do projeto
@@ -20,5 +22,6 @@ async function bootstrap() {
   SwaggerModule.setup('api', app, document);
   
   await app.listen(3000);
+
 }
 bootstrap();
