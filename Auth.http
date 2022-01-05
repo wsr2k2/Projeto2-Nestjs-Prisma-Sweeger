@@ -1,7 +1,7 @@
 # LISTAR Auth:
 GET http://localhost:3000/auth
 Content-Type: application/json
-Authorization: Bearer 
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJub21lIjoiRmVsaXBlIiwiaWF0IjoxNjM5ODM0OTc0LCJleHAiOjE2Mzk4MzUwMzR9.tW51ohY-VMcMAK-rgskYl75UQvXf2X7HXOQlkYUmFNk
 ###
 
 # CADASTRAR Auth:
@@ -9,7 +9,7 @@ POST http://localhost:3000/auth
 Content-Type: application/json
 
 {
-    "nome":"Usuário teste"
+    "nome":"Felipe"
 }
 ###
 

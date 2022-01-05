@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 import { Test, TestingModule } from '@nestjs/testing';
 import { UsuariosController } from './usuarios.controller';
 import { UsuariosService } from './usuarios.service';
