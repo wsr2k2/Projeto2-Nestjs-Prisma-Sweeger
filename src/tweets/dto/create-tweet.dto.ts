@@ -12,21 +12,11 @@ export class CreateTweetDto {
   @Max(280)
   texto: string;
 
-  @ApiProperty()
   @IsNotEmpty()
-  @IsString()
-  emoji: string;
+  @IsInt()
+  usuarioid: number;
 
   @IsNotEmpty()
   @IsDate()
   data_postagem: Date;
-
-  @ApiProperty()
-  @IsNotEmpty()
-  @IsInt()
-  curtidas: number;
-
-  @IsNotEmpty()
-  @IsInt()
-  usuarioid: number;
 }

@@ -17,7 +17,7 @@ export class UsuariosService {
   async findByLogin(login: CreateUsuarioDto): Promise<Usuario> {
     const user = await this.prisma.usuario.findFirst({
       where: {
-        nome: login.nome,
+        email: login.email,
       },
     });
     if (!user) {
@@ -33,7 +33,7 @@ export class UsuariosService {
   async validateUser(payload: JwtPayload): Promise<Usuario> {
     const user = await this.prisma.usuario.findFirst({
       where: {
-        nome: payload.nome,
+        email: payload.email,
       },
     });
 
