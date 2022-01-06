@@ -18,7 +18,7 @@ async function bootstrap() {
     .addTag('Seguindo') // tag para agrupar os endpoints
     .build();
   const document = SwaggerModule.createDocument(app, config);
-  SwaggerModule.setup('api', app, document);
+  SwaggerModule.setup('', app, document);
   
   await app.listen(process.env.PORT || 3000);
 
