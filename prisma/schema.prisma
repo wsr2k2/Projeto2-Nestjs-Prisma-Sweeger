@@ -10,39 +10,72 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model Usuario {
-  id              Int   @default(autoincrement()) @id
-  nome            String
-  imagem          String
-  bio             String
-  nascimento      String
-  seguidores      Seguidores []
-  seguindo        Seguindo []
-  criado_em       DateTime @default(now()) @map(name: "created_at")
-  modificado_em   DateTime @updatedAt @map(name: "updated_at")
-  tweet           Tweet[]
+model Tweet {
+  id            Int       @id @default(autoincrement())
+  texto         String    @db.VarChar(280)
+  usuarioid     Int
+  usuario       Usuario   @relation(fields: [usuarioid], references: [id])
+  categorias    CategoriasDeTweet[]
+  tweetFavorito TweetFavorito[]
+  criado_em     DateTime   @default(now()) @map("created_at")
+}
+
+model Categoria {
+  id        Int                  @id @default(autoincrement())
+  nome      String
+  tweet     CategoriasDeTweet[]
+  criado_em DateTime             @default(now()) @map("created_at")
 }
 
 model Seguidores {
-  id              Int @default(autoincrement()) @id
-  idseguidor      Int
-  usuarios        Usuario []
-  usuarioid       Int
+  id        Int      @id @default(autoincrement())
+  nome      String
+  usuarioid Int
+  usuario   Usuario     @relation(fields: [usuarioid], references: [id])
+  criado_em DateTime @default(now()) @map("created_at")
 }
 
 model Seguindo {
-  id              Int   @default(autoincrement()) @id
-  idseguindo      Int
-  usuarios        Usuario []
-  usuarioid       Int
+  id        Int      @id @default(autoincrement())
+  nome      String
+  usuarioid Int
+  usuario   Usuario  @relation(fields: [usuarioid], references: [id])
+  criado_em DateTime @default(now()) @map("created_at")
 }
 
-model Tweet {
+model Usuario {
   id              Int   @default(autoincrement()) @id
-  texto           String @db.VarChar(280)
-  emoji           String 
-  data_postagem   DateTime @default(now()) @map(name: "created_at")
-  curtidas        Int
-  usuarios        Usuario []
-  usuarioid       Int
+  nome            String
+  sobrenome       String
+  email           String @unique
+  senha           String
+  sobre           String
+  nascimento      String
+  tweet           Tweet[]
+  seguidores      Seguidores[]
+  seguindo        Seguindo[]
+  tweetFavorito   TweetFavorito[]
+  criado_em       DateTime @default(now()) @map(name: "created_at")
+}
+
+model CategoriasDeTweet {
+  tweet      Tweet    @relation(fields: [tweetid], references: [id])
+  tweetid    Int
+  categoria  Categoria @relation(fields: [categoriaid], references: [id])
+  categoriaid Int
+  criado_em   DateTime @default(now())
+  criado_por  String
+
+  @@id([tweetid, categoriaid])
+}
+
+model TweetFavorito {
+  tweetid    Int
+  tweet      Tweet    @relation(fields: [tweetid], references: [id])
+  usuarioid     Int
+  usuario       Usuario     @relation(fields: [usuarioid], references: [id])
+  criado_em DateTime @default(now())
+  criado_por String
+
+  @@id([tweetid, usuarioid])
 }

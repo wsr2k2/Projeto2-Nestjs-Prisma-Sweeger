@@ -8,7 +8,7 @@ import { Strategy } from "passport-jwt";
 
 /* eslint-disable prettier/prettier */
 export interface JwtPayload {
-  nome: string;
+  email: string;
 }
 
 @Injectable()

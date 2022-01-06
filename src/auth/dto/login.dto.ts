@@ -1,34 +1,42 @@
 /* eslint-disable prettier/prettier */
 import { ApiProperty } from '@nestjs/swagger';
-import { IsDate, IsNotEmpty, IsString } from 'class-validator';
+import { IsDate, IsEmail, IsNotEmpty, IsString } from 'class-validator';
 
 export class LoginDto {
   id: number;
-
-  @ApiProperty({
-    description: 'Primeiro realizar o cadastro de usuário e após utilizar o mesmo nome cadastrado para gerar o Token de login'
-  })
+  
+  @ApiProperty()
   @IsNotEmpty()
   @IsString()
   nome: string;
 
+  @ApiProperty()
   @IsNotEmpty()
   @IsString()
-  imagem: string;
+  sobrenome: string;
 
+  @ApiProperty()
+  @IsNotEmpty()
+  @IsEmail()
+  email: string;
+
+  @ApiProperty()
   @IsNotEmpty()
   @IsString()
-  bio: string;
+  senha: string;
 
+  @ApiProperty()
+  @IsNotEmpty()
+  @IsString()
+  sobre: string;
+
+  @ApiProperty()
   @IsNotEmpty()
   @IsString()
   nascimento: string;
 
+  @ApiProperty()
   @IsNotEmpty()
   @IsDate()
   criado_em: Date;
-
-  @IsNotEmpty()
-  @IsDate()
-  modificado_em: Date;
 }

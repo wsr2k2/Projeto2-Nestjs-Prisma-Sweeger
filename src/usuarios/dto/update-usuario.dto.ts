@@ -1,7 +1,7 @@
 /* eslint-disable prettier/prettier */
 import { PartialType } from '@nestjs/mapped-types';
 import { ApiProperty } from '@nestjs/swagger';
-import { IsDate, IsNotEmpty, IsString } from 'class-validator';
+import { IsDate, IsEmail, IsNotEmpty, IsString } from 'class-validator';
 import { CreateUsuarioDto } from './create-usuario.dto';
 
 export class UpdateUsuarioDto extends PartialType(CreateUsuarioDto) {
@@ -15,23 +15,30 @@ export class UpdateUsuarioDto extends PartialType(CreateUsuarioDto) {
   @ApiProperty()
   @IsNotEmpty()
   @IsString()
-  imagem: string;
+  sobrenome: string;
+
+  @ApiProperty()
+  @IsNotEmpty()
+  @IsEmail()
+  email: string;
 
   @ApiProperty()
   @IsNotEmpty()
   @IsString()
-  bio: string;
+  senha: string;
+
+  @ApiProperty()
+  @IsNotEmpty()
+  @IsString()
+  sobre: string;
 
   @ApiProperty()
   @IsNotEmpty()
   @IsString()
   nascimento: string;
 
+  @ApiProperty()
   @IsNotEmpty()
   @IsDate()
   criado_em: Date;
-
-  @IsNotEmpty()
-  @IsDate()
-  modificado_em: Date;
 }
