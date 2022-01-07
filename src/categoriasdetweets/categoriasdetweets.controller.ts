@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/common';
 import { CategoriasdetweetsService } from './categoriasdetweets.service';
 import { CreateCategoriasdetweetDto } from './dto/create-categoriasdetweet.dto';

@@ -1,26 +1,30 @@
+/* eslint-disable prettier/prettier */
 import { Injectable } from '@nestjs/common';
+import { Categoriasdetweets, Prisma } from '@prisma/client';
+import { PrismaService} from 'src/prisma/prisma.service';
 import { CreateCategoriasdetweetDto } from './dto/create-categoriasdetweet.dto';
 import { UpdateCategoriasdetweetDto } from './dto/update-categoriasdetweet.dto';
 
 @Injectable()
 export class CategoriasdetweetsService {
-  create(createCategoriasdetweetDto: CreateCategoriasdetweetDto) {
-    return 'This action adds a new categoriasdetweet';
+  constructor(private prisma: PrismaService) {}
+  async create(createCategoriasdetweetDto: CreateCategoriasdetweetDto): Promise<Categoriasdetweets> {
+    return await this.prisma.categoriasdetweet.create({data: {...createCategoriasdetweetDto} });
+  }
   }
 
-  findAll() {
-    return `This action returns all categoriasdetweets`;
+  async findAll(): Promise<Categoriasdetweets[]>{
+    return await this.prisma.categoriasdetweets.findMany();
   }
 
-  findOne(id: number) {
-    return `This action returns a #${id} categoriasdetweet`;
+  async findOne(id: number): Promise<Categoriasdetweets> {
+    return await this.prisma.categoriasdetweet.findUnique({ where: { id } });
   }
 
-  update(id: number, updateCategoriasdetweetDto: UpdateCategoriasdetweetDto) {
-    return `This action updates a #${id} categoriasdetweet`;
+  async update(id: number, updateCategoriasdetweetDto): Promise<Categoriasdetweets> {
+    return await this.prisma.categoriasdetweets.update({ data, where: { id }});
   }
 
-  remove(id: number) {
-    return `This action removes a #${id} categoriasdetweet`;
-  }
+  async remove(id: number): Promise<Categoriasdetweets> {
+    return await this.prisma.categoriasdetweet.delete({ where: { id } });
 }
