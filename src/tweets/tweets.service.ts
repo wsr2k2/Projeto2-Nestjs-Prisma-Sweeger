@@ -9,8 +9,10 @@ import { UpdateTweetDto } from './dto/update-tweet.dto';
 export class TweetsService {
   constructor(private prisma: PrismaService) {}
 
-  async create(data: Prisma.TweetCreateInput): Promise<Tweet> {
-    return await this.prisma.tweet.create({ data });
+  async create(createTweetDto: CreateTweetDto): Promise<Tweet> {
+    return await this.prisma.tweet.create({
+      data: { ...createTweetDto },
+    });
   }
 
   async findAll(): Promise<Tweet[]> {

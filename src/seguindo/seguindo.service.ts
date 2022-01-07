@@ -9,9 +9,9 @@ import { UpdateSeguindoDto } from './dto/update-seguindo.dto';
 export class SeguindoService {
   constructor(private prisma: PrismaService) {}
 
-  async create(data: Prisma.SeguindoCreateInput): Promise<Seguindo> {
-    return await this.prisma.seguindo.create({ data });
-  }
+  async create(createSeguindoDto: CreateSeguindoDto): Promise<Seguindo> {
+    return await this.prisma.seguindo.create({ data: { ...createSeguindoDto}});
+  };
 
   async findAll(): Promise<Seguindo[]> {
     return await this.prisma.seguindo.findMany();
