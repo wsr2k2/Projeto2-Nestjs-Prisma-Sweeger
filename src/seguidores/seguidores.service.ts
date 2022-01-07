@@ -11,8 +11,8 @@ import { UpdateSeguidorDto } from './dto/update-seguidore.dto';
 export class SeguidoresService {
   constructor(private prisma: PrismaService) {}
 
-  async create(data: Prisma.SeguidoresCreateInput): Promise<Seguidores> {
-    return await this.prisma.seguidores.create({ data });
+  async create(createSeguidorDto: CreateSeguidorDto): Promise<Seguidores> {
+    return await this.prisma.seguidores.create({ data: { ...createSeguidorDto}});
   }
 
   async findAll(): Promise<Seguidores[]> {

@@ -1,26 +1,33 @@
+/* eslint-disable prettier/prettier */
+/* eslint-disable @typescript-eslint/no-unused-vars */
+/* eslint-disable prettier/prettier */
 import { Injectable } from '@nestjs/common';
+import { Categoria, Prisma } from '@prisma/client';
+import { PrismaService } from 'src/prisma/prisma.service';
 import { CreateCategoriaDto } from './dto/create-categoria.dto';
 import { UpdateCategoriaDto } from './dto/update-categoria.dto';
 
 @Injectable()
 export class CategoriasService {
-  create(createCategoriaDto: CreateCategoriaDto) {
-    return 'This action adds a new categoria';
+  constructor(private prisma: PrismaService) {}
+
+  async create(createCategoriaDto: CreateCategoriaDto): Promise<Categoria> {
+    return await this.prisma.categoria.create({ data: { ...createCategoriaDto} });
   }
 
-  findAll() {
-    return `This action returns all categorias`;
+  async findAll(): Promise<Categoria[]> {
+    return await this.prisma.categoria.findMany();
   }
 
-  findOne(id: number) {
-    return `This action returns a #${id} categoria`;
+  async findOne(id: number): Promise<Categoria> {
+    return await this.prisma.categoria.findUnique({ where: { id } });
   }
 
-  update(id: number, updateCategoriaDto: UpdateCategoriaDto) {
-    return `This action updates a #${id} categoria`;
+  async update(id: number, data: UpdateCategoriaDto): Promise<Categoria> {
+    return await this.prisma.categoria.update({ data, where: { id } });
   }
 
-  remove(id: number) {
-    return `This action removes a #${id} categoria`;
+  async remove(id: number): Promise<Categoria> {
+    return await this.prisma.categoria.delete({ where: { id } });
   }
 }
