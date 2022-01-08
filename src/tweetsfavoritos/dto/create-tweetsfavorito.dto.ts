@@ -1,6 +1,6 @@
 /* eslint-disable prettier/prettier */
 import { ApiProperty } from "@nestjs/swagger";
-import { IsDate, IsInt, IsNotEmpty } from "class-validator";
+import { IsDate, IsInt, IsNotEmpty, IsString } from "class-validator";
 
 export class CreateTweetsfavoritoDto {
   id: number;
@@ -14,14 +14,9 @@ export class CreateTweetsfavoritoDto {
   @IsNotEmpty()
   @IsInt()
   usuarioid: number;
-    
-  @ApiProperty()
-  @IsNotEmpty()
-  @IsDate()
-  criado_em: Date;
   
   @ApiProperty()
   @IsNotEmpty()
-  @IsDate()
-  criado_por: Date;
+  @IsString()
+  criado_por: string;
 }

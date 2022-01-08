@@ -14,9 +14,4 @@ export class CreateSeguidorDto {
   @IsNotEmpty()
   @IsInt()
   usuarioid: number;
-
-  @ApiProperty()
-  @IsNotEmpty()
-  @IsDate()
-  criado_em: Date;
 }

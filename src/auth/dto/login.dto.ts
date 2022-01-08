@@ -1,20 +1,8 @@
 /* eslint-disable prettier/prettier */
 import { ApiProperty } from '@nestjs/swagger';
-import { IsDate, IsEmail, IsNotEmpty, IsString } from 'class-validator';
+import { IsEmail, IsNotEmpty, IsString } from 'class-validator';
 
 export class LoginDto {
-  id: number;
-  
-  @ApiProperty()
-  @IsNotEmpty()
-  @IsString()
-  nome: string;
-
-  @ApiProperty()
-  @IsNotEmpty()
-  @IsString()
-  sobrenome: string;
-
   @ApiProperty()
   @IsNotEmpty()
   @IsEmail()
@@ -24,19 +12,4 @@ export class LoginDto {
   @IsNotEmpty()
   @IsString()
   senha: string;
-
-  @ApiProperty()
-  @IsNotEmpty()
-  @IsString()
-  sobre: string;
-
-  @ApiProperty()
-  @IsNotEmpty()
-  @IsString()
-  nascimento: string;
-
-  @ApiProperty()
-  @IsNotEmpty()
-  @IsDate()
-  criado_em: Date;
 }

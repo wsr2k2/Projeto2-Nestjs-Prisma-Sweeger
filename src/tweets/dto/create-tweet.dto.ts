@@ -1,6 +1,6 @@
 /* eslint-disable prettier/prettier */
 import { ApiProperty } from '@nestjs/swagger';
-import { IsDate, IsInt, IsNotEmpty, IsString, Max } from 'class-validator';
+import { IsInt, IsNotEmpty, IsString, Max } from 'class-validator';
 
 /* eslint-disable @typescript-eslint/ban-types */
 export class CreateTweetDto {
@@ -15,8 +15,4 @@ export class CreateTweetDto {
   @IsNotEmpty()
   @IsInt()
   usuarioid: number;
-
-  @IsNotEmpty()
-  @IsDate()
-  data_postagem: Date;
 }

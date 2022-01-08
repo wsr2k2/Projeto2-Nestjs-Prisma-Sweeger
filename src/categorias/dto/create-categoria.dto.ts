@@ -9,9 +9,4 @@ export class CreateCategoriaDto {
   @IsNotEmpty()
   @IsString()
   nome: string;
-    
-  @ApiProperty()
-  @IsNotEmpty()
-  @IsDate()
-  criado_em: Date;
 }

@@ -22,11 +22,7 @@ export class CategoriasService {
   async findOne(id: number): Promise<Categoria> {
     return await this.prisma.categoria.findUnique({ where: { id } });
   }
-
-  async update(id: number, data: UpdateCategoriaDto): Promise<Categoria> {
-    return await this.prisma.categoria.update({ data, where: { id } });
-  }
-
+  
   async remove(id: number): Promise<Categoria> {
     return await this.prisma.categoria.delete({ where: { id } });
   }

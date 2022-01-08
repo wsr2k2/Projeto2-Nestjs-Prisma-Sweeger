@@ -11,71 +11,71 @@ datasource db {
 }
 
 model Tweet {
-  id            Int       @id @default(autoincrement())
-  texto         String    @db.VarChar(280)
-  usuarioid     Int
-  usuario       Usuario   @relation(fields: [usuarioid], references: [id])
-  categorias    CategoriasDeTweet[]
-  tweetFavorito TweetFavorito[]
-  criado_em     DateTime   @default(now()) @map("created_at")
+  id                    Int       @id @default(autoincrement())
+  texto                 String    @db.VarChar(280)
+  usuarioid             Int
+  usuario               Usuario   @relation(fields: [usuarioid], references: [id])
+  categorias            CategoriasDeTweet[]
+  tweetFavorito         TweetFavorito[]
+  criado_em             DateTime   @default(now()) @map("created_at")
 }
 
 model Categoria {
-  id        Int                  @id @default(autoincrement())
-  nome      String
-  tweet     CategoriasDeTweet[]
-  criado_em DateTime             @default(now()) @map("created_at")
+  id                    Int         @id @default(autoincrement())
+  nome                  String
+  tweet                 CategoriasDeTweet[]
+  criado_em             DateTime    @default(now()) @map("created_at")
 }
 
 model Seguidores {
-  id        Int      @id @default(autoincrement())
-  nome      String
-  usuarioid Int
-  usuario   Usuario     @relation(fields: [usuarioid], references: [id])
-  criado_em DateTime @default(now()) @map("created_at")
+  id                    Int         @id @default(autoincrement())
+  nome                  String
+  usuarioid             Int
+  usuario               Usuario     @relation(fields: [usuarioid], references: [id])
+  criado_em             DateTime @default(now()) @map("created_at")
 }
 
 model Seguindo {
-  id        Int      @id @default(autoincrement())
-  nome      String
-  usuarioid Int
-  usuario   Usuario  @relation(fields: [usuarioid], references: [id])
-  criado_em DateTime @default(now()) @map("created_at")
+  id                    Int      @id @default(autoincrement())
+  nome                  String
+  usuarioid             Int
+  usuario               Usuario  @relation(fields: [usuarioid], references: [id])
+  criado_em             DateTime @default(now()) @map("created_at")
 }
 
 model Usuario {
-  id              Int   @default(autoincrement()) @id
-  nome            String
-  sobrenome       String
-  email           String @unique
-  senha           String
-  sobre           String
-  nascimento      String
-  tweet           Tweet[]
-  seguidores      Seguidores[]
-  seguindo        Seguindo[]
-  tweetFavorito   TweetFavorito[]
-  criado_em       DateTime @default(now()) @map(name: "created_at")
+  id                    Int   @default(autoincrement()) @id
+  nome                  String
+  sobrenome             String
+  email                 String @unique
+  senha                 String
+  sobre                 String
+  nascimento            String
+  tweet                 Tweet[]
+  seguidores            Seguidores[]
+  seguindo              Seguindo[]
+  tweetFavorito         TweetFavorito[]
+  criado_em             DateTime @default(now()) @map(name: "created_at")
 }
 
 model CategoriasDeTweet {
-  tweet      Tweet    @relation(fields: [tweetid], references: [id])
-  tweetid    Int
-  categoria  Categoria @relation(fields: [categoriaid], references: [id])
-  categoriaid Int
-  criado_em   DateTime @default(now())
-  criado_por  String
+  tweet                 Tweet    @relation(fields: [tweetid], references: [id])
+  tweetid               Int
+  categoria             Categoria @relation(fields: [categoriaid], references: [id])
+  categoriaid           Int
+  criado_em             DateTime @default(now())
+  criado_por            String
 
   @@id([tweetid, categoriaid])
 }
 
 model TweetFavorito {
-  tweetid    Int
-  tweet      Tweet    @relation(fields: [tweetid], references: [id])
-  usuarioid     Int
-  usuario       Usuario     @relation(fields: [usuarioid], references: [id])
-  criado_em DateTime @default(now())
-  criado_por String
+  tweetid               Int
+  tweet                 Tweet    @relation(fields: [tweetid], references: [id])
+  usuarioid             Int
+  usuario               Usuario     @relation(fields: [usuarioid], references: [id])
+  criado_em             DateTime @default(now())
+  criado_por            String
 
   @@id([tweetid, usuarioid])
 }

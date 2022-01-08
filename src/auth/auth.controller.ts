@@ -18,6 +18,6 @@ export class AuthController {
   @Get()
   @UseGuards(AuthGuard())
   async checkLogin() {
-    return 'logado'
+    return 'Usuário autenticado com sucesso'
   }
 }
