@@ -35,7 +35,6 @@ export class CategoriasdetweetsController {
   findOne(@Param('id') id: string) {
     return this.categoriasdetweetsService.findOne(+id);
   }
-
   @Delete(':id')
   @UseGuards(AuthGuard('jwt'))
   remove(@Param('id') id: string) {
