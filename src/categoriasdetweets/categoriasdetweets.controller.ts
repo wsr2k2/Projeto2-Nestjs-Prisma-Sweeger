@@ -23,11 +23,7 @@ export class CategoriasdetweetsController {
     return this.categoriasdetweetsService.findOne(+id);
   }
 
-  @Patch(':id')
-  update(@Param('id') id: string, @Body() updateCategoriasdetweetDto: UpdateCategoriasdetweetDto) {
-    return this.categoriasdetweetsService.update(+id, updateCategoriasdetweetDto);
-  }
-
+ 
   @Delete(':id')
   remove(@Param('id') id: string) {
     return this.categoriasdetweetsService.remove(+id);
