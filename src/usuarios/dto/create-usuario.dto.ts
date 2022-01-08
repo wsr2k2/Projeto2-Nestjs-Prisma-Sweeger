@@ -37,9 +37,4 @@ export class CreateUsuarioDto {
   @IsString()
   nascimento: string;
 
-  @ApiProperty()
-  @IsNotEmpty()
-  @IsDate()
-  criado_em: Date;
-
 }

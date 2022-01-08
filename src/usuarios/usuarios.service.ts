@@ -1,6 +1,8 @@
 /* eslint-disable prettier/prettier */
 import { HttpException, HttpStatus, Injectable } from '@nestjs/common';
 import { Usuario, Prisma } from '@prisma/client';
+import * as bcrypt from 'bcrypt';
+import { LoginDto } from 'src/auth/dto/login.dto';
 import { JwtPayload } from 'src/auth/jwt.strategy';
 import { PrismaService } from 'src/prisma/prisma.service';
 import { CreateUsuarioDto } from './dto/create-usuario.dto';
@@ -11,10 +13,11 @@ export class UsuariosService {
   constructor(private prisma: PrismaService) {}
 
   async create(data: Prisma.UsuarioCreateInput): Promise<Usuario> {
+    data.senha = await bcrypt.hash(data.senha, 10);
     return await this.prisma.usuario.create({ data });
   }
 
-  async findByLogin(login: CreateUsuarioDto): Promise<Usuario> {
+  async findByLogin(login: LoginDto): Promise<Usuario> {
     const user = await this.prisma.usuario.findFirst({
       where: {
         email: login.email,
@@ -25,6 +28,12 @@ export class UsuariosService {
         'Usuario não encontrado',
         HttpStatus.UNAUTHORIZED,
       );
+    }
+
+    const senhaCorreta = await bcrypt.compare(login.senha, user.senha);
+
+    if(!senhaCorreta) {
+      throw new HttpException('Senha inválida', HttpStatus.UNAUTHORIZED);
     }
 
     return user;

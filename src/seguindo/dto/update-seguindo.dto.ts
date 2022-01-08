@@ -1,7 +1,7 @@
 /* eslint-disable prettier/prettier */
 import { PartialType } from '@nestjs/mapped-types';
 import { ApiProperty } from '@nestjs/swagger';
-import { IsInt, IsNotEmpty } from 'class-validator';
+import { IsInt, IsNotEmpty, IsString } from 'class-validator';
 import { CreateSeguindoDto } from './create-seguindo.dto';
 
 export class UpdateSeguindoDto extends PartialType(CreateSeguindoDto) {
@@ -9,8 +9,8 @@ export class UpdateSeguindoDto extends PartialType(CreateSeguindoDto) {
 
   @ApiProperty()
   @IsNotEmpty()
-  @IsInt()
-  idseguindo: number;
+  @IsString()
+  nome: string;
 
   @ApiProperty()
   @IsNotEmpty()

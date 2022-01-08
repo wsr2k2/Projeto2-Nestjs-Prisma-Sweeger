@@ -36,9 +36,4 @@ export class UpdateUsuarioDto extends PartialType(CreateUsuarioDto) {
   @IsNotEmpty()
   @IsString()
   nascimento: string;
-
-  @ApiProperty()
-  @IsNotEmpty()
-  @IsDate()
-  criado_em: Date;
 }

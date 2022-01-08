@@ -13,20 +13,6 @@ export class UpdateTweetDto extends PartialType(CreateTweetDto) {
   @Max(280)
   texto: string;
 
-  @ApiProperty()
-  @IsNotEmpty()
-  @IsString()
-  emoji: string;
-
-  @IsNotEmpty()
-  @IsDate()
-  data_postagem: Date;
-
-  @ApiProperty()
-  @IsNotEmpty()
-  @IsInt()
-  curtidas: number;
-
   @IsNotEmpty()
   @IsInt()
   usuarioid: number;

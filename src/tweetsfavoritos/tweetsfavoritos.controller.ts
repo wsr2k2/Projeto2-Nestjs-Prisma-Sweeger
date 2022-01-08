@@ -1,13 +1,27 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/common';
+import {
+  Controller,
+  Get,
+  Post,
+  Body,
+  Param,
+  Delete,
+  UseGuards,
+} from '@nestjs/common';
 import { TweetsfavoritosService } from './tweetsfavoritos.service';
 import { CreateTweetsfavoritoDto } from './dto/create-tweetsfavorito.dto';
 import { UpdateTweetsfavoritoDto } from './dto/update-tweetsfavorito.dto';
+import { AuthGuard } from '@nestjs/passport';
+import { ApiTags } from '@nestjs/swagger';
 
+@ApiTags('Tweets Favoritos')
 @Controller('tweetsfavoritos')
 export class TweetsfavoritosController {
-  constructor(private readonly tweetsfavoritosService: TweetsfavoritosService) {}
+  constructor(
+    private readonly tweetsfavoritosService: TweetsfavoritosService,
+  ) {}
 
   @Post()
+  @UseGuards(AuthGuard('jwt'))
   create(@Body() createTweetsfavoritoDto: CreateTweetsfavoritoDto) {
     return this.tweetsfavoritosService.create(createTweetsfavoritoDto);
   }
@@ -22,12 +36,8 @@ export class TweetsfavoritosController {
     return this.tweetsfavoritosService.findOne(+id);
   }
 
-  @Patch(':id')
-  update(@Param('id') id: string, @Body() updateTweetsfavoritoDto: UpdateTweetsfavoritoDto) {
-    return this.tweetsfavoritosService.update(+id, updateTweetsfavoritoDto);
-  }
-
   @Delete(':id')
+  @UseGuards(AuthGuard('jwt'))
   remove(@Param('id') id: string) {
     return this.tweetsfavoritosService.remove(+id);
   }
