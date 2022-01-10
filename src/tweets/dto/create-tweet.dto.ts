@@ -9,7 +9,6 @@ export class CreateTweetDto {
   @ApiProperty()
   @IsNotEmpty()
   @IsString()
-  @Max(280)
   texto: string;
 
   @IsNotEmpty()

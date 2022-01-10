@@ -53,11 +53,25 @@ export class UsuariosService {
   }
 
   async findAll(): Promise<Usuario[]> {
-    return await this.prisma.usuario.findMany();
+    return await this.prisma.usuario.findMany({
+      include: {
+        tweet: true,
+        seguindo: true,
+        seguidores: true,
+        tweetFavorito: true,
+
+      }
+    });
   }
 
   async findOne(id: number): Promise<Usuario> {
-    return await this.prisma.usuario.findUnique({ where: { id } });
+    return await this.prisma.usuario.findUnique({ where: { id },
+      include: {
+        tweet: true,
+        seguindo: true,
+        seguidores: true,
+        tweetFavorito: true,
+      } });
   }
 
   async update(id: number, data: UpdateUsuarioDto): Promise<Usuario> {
