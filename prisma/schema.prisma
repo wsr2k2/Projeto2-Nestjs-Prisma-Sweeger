@@ -12,7 +12,7 @@ datasource db {
 
 model Tweet {
   id                    Int       @id @default(autoincrement())
-  texto                 String    @db.VarChar(280)
+  texto                 String    
   usuarioid             Int
   usuario               Usuario   @relation(fields: [usuarioid], references: [id])
   categorias            CategoriasDeTweet[]
