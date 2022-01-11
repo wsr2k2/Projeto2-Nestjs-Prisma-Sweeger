@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 import {
   Controller,
   Get,
@@ -9,7 +10,6 @@ import {
 } from '@nestjs/common';
 import { TweetsfavoritosService } from './tweetsfavoritos.service';
 import { CreateTweetsfavoritoDto } from './dto/create-tweetsfavorito.dto';
-import { UpdateTweetsfavoritoDto } from './dto/update-tweetsfavorito.dto';
 import { AuthGuard } from '@nestjs/passport';
 import { ApiTags } from '@nestjs/swagger';
 
@@ -28,6 +28,7 @@ export class TweetsfavoritosController {
 
   @Get()
   findAll() {
+    console.log('chegou ate aqui')
     return this.tweetsfavoritosService.findAll();
   }
 

@@ -2,9 +2,9 @@
 import { ApiProperty, PartialType } from '@nestjs/swagger';
 import { IsInt, IsNotEmpty, IsString } from 'class-validator';
 
-import { CreateCategoriasdetweetDto } from './create-categoriasdetweet.dto';
+import { CreateCategoriasDeTweetDto } from './create-categoriasdetweet.dto';
 
-export class UpdateCategoriasdetweetDto extends PartialType(CreateCategoriasdetweetDto) {
+export class UpdateCategoriasdetweetDto extends PartialType(CreateCategoriasDeTweetDto) {
   id: number;
 
   @ApiProperty()
@@ -21,4 +21,9 @@ export class UpdateCategoriasdetweetDto extends PartialType(CreateCategoriasdetw
   @IsNotEmpty()
   @IsString()
   criado_por: string;
+
+  @ApiProperty()
+  @IsNotEmpty()
+  @IsInt()
+  usuarioid: number;
 }

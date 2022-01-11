@@ -1,5 +1,5 @@
 import { ApiProperty, PartialType } from '@nestjs/swagger';
-import { IsDate, IsNotEmpty, IsString } from 'class-validator';
+import { IsNotEmpty, IsString } from 'class-validator';
 import { CreateCategoriaDto } from './create-categoria.dto';
 
 export class UpdateCategoriaDto extends PartialType(CreateCategoriaDto) {

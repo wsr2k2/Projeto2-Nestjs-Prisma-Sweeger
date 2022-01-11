@@ -5,7 +5,6 @@ import * as bcrypt from 'bcrypt';
 import { LoginDto } from 'src/auth/dto/login.dto';
 import { JwtPayload } from 'src/auth/jwt.strategy';
 import { PrismaService } from 'src/prisma/prisma.service';
-import { CreateUsuarioDto } from './dto/create-usuario.dto';
 import { UpdateUsuarioDto } from './dto/update-usuario.dto';
 
 @Injectable()
@@ -59,7 +58,9 @@ export class UsuariosService {
         seguindo: true,
         seguidores: true,
         tweetFavorito: true,
-
+        categoriasdetweet: true,
+        categoria: true,
+        
       }
     });
   }
@@ -71,6 +72,8 @@ export class UsuariosService {
         seguindo: true,
         seguidores: true,
         tweetFavorito: true,
+        categoriasdetweet: true,
+        categoria: true,
       } });
   }
 

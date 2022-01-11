@@ -1,0 +1,23 @@
+# LISTAR TODAS categorias de tweets:
+GET http://localhost:3000/categoriasdetweets
+###
+
+# LISTAR UMA categoria de tweets por ID:
+GET http://localhost:3000/categoriasdetweets/1
+###
+
+# CADASTRAR uma nova categoria de tweets:
+POST http://localhost:3000/categoriasdetweets
+Content-Type: application/json
+
+{
+    "tweetid": NUMBER,
+    "categoriaid": NUMBER,
+    "criado_por":"STRING",
+    "usuarioid": NUMBER
+}
+###
+
+# EXCLUIR categoria de tweets por ID:
+DELETE http://localhost:3000/categoriasdetweets/1
+###

@@ -25,6 +25,8 @@ model Categoria {
   nome                  String
   tweet                 CategoriasDeTweet[]
   criado_em             DateTime    @default(now()) @map("created_at")
+  usuarioid             Int
+  usuario               Usuario   @relation(fields: [usuarioid], references: [id])
 }
 
 model Seguidores {
@@ -56,26 +58,28 @@ model Usuario {
   seguindo              Seguindo[]
   tweetFavorito         TweetFavorito[]
   criado_em             DateTime @default(now()) @map(name: "created_at")
+  categoria             Categoria[]
+  categoriasdetweet     CategoriasDeTweet[]
 }
 
 model CategoriasDeTweet {
+  id                    Int   @default(autoincrement()) @id
   tweet                 Tweet    @relation(fields: [tweetid], references: [id])
   tweetid               Int
   categoria             Categoria @relation(fields: [categoriaid], references: [id])
   categoriaid           Int
   criado_em             DateTime @default(now())
   criado_por            String
-
-  @@id([tweetid, categoriaid])
+  usuarioid             Int
+  usuario               Usuario   @relation(fields: [usuarioid], references: [id])
 }
 
 model TweetFavorito {
+  id                    Int   @default(autoincrement()) @id
   tweetid               Int
   tweet                 Tweet    @relation(fields: [tweetid], references: [id])
   usuarioid             Int
   usuario               Usuario     @relation(fields: [usuarioid], references: [id])
   criado_em             DateTime @default(now())
   criado_por            String
-
-  @@id([tweetid, usuarioid])
 }

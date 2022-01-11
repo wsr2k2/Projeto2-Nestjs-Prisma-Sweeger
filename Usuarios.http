@@ -11,10 +11,12 @@ POST http://localhost:3000/usuarios
 Content-Type: application/json
 
 {
-    "nome":"Felipe",
-    "imagem":"fotoFelipe.jpg",
-    "bio":"criança com muita energia e alegria",
-    "nascimento":"31/07/2014"
+    "nome":"STRING",
+    "sobrenome":"STRING",
+    "email":"STRING",
+    "senha":"STRING",
+    "sobre":"STRING",
+    "nascimento":"STRING"    
 }
 ###
 
@@ -24,10 +26,12 @@ PATCH  http://localhost:3000/usuarios/1
 Content-Type: application/json
 
 {
-    "nome":"William Rodrigues",
-    "imagem":"william.jpg",
-    "bio":"novo no mundo da programação",
-    "nascimento":"08/01/1982"
+    "nome":"STRING",
+    "sobrenome":"STRING",
+    "email":"STRING",
+    "senha":"STRING",
+    "sobre":"STRING",
+    "nascimento":"STRING"    
 }
 ###
 

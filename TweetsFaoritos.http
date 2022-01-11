@@ -1,0 +1,22 @@
+# LISTAR TODOS tweets favoritos:
+GET http://localhost:3000/tweetsfavoritos
+###
+
+# LISTAR UM tweet favorito por ID:
+GET http://localhost:3000/tweetsfavoritos/1
+###
+
+# CADASTRAR um novo tweet favorito:
+POST http://localhost:3000/tweetsfavoritos
+Content-Type: application/json
+
+{
+    "tweetid": NUMBER,
+    "usuarioid": NUMBER,
+    "criado_por":"STRING"
+}
+###
+
+# EXCLUIR tweet favorito por ID:
+DELETE http://localhost:3000/tweetsfavoritos/1
+###

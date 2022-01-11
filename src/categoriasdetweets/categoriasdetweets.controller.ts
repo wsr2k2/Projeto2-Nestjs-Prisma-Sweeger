@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 import {
   Controller,
   Get,
@@ -9,20 +10,19 @@ import {
 } from '@nestjs/common';
 import { AuthGuard } from '@nestjs/passport';
 import { CategoriasdetweetsService } from './categoriasdetweets.service';
-import { CreateCategoriasdetweetDto } from './dto/create-categoriasdetweet.dto';
-import { UpdateCategoriasdetweetDto } from './dto/update-categoriasdetweet.dto';
+import { CreateCategoriasDeTweetDto } from './dto/create-categoriasdetweet.dto';
 import { ApiTags } from '@nestjs/swagger';
 
 @ApiTags('Categoria de Tweets')
 @Controller('categoriasdetweets')
-export class CategoriasdetweetsController {
+export class CreateCategoriasDeTweetController {
   constructor(
     private readonly categoriasdetweetsService: CategoriasdetweetsService,
   ) {}
-
+  
   @Post()
   @UseGuards(AuthGuard('jwt'))
-  create(@Body() createCategoriasdetweetDto: CreateCategoriasdetweetDto) {
+  create(@Body() createCategoriasdetweetDto: CreateCategoriasDeTweetDto) {
     return this.categoriasdetweetsService.create(createCategoriasdetweetDto);
   }
 

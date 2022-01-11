@@ -10,14 +10,14 @@ async function bootstrap() {
   app.enableCors();
   
   const config = new DocumentBuilder()
-    .setTitle('API-Twitter') // local onde pode ser colocado o nome do projeto
-    .setDescription('Projeto 3 do modulo 04 da Blue. O projeto consiste em criar uma API para controle do Twitter, onde o usurio postará tweets e terá seguidores.') // pequena descrição do projeto
-    .setVersion('2.0') // versão do projeto
-    .addTag('Auth') // tag para agrupar os endpoints
-    .addTag('Usuários') // tag para agrupar os endpoints
-    .addTag('Tweets') // tag para agrupar os endpoints
-    .addTag('Seguidores') // tag para agrupar os endpoints
-    .addTag('Seguindo') // tag para agrupar os endpoints
+    .setTitle('API-Twitter') 
+    .setDescription('Projeto 3 do modulo 04 da Blue. O projeto consiste em criar uma API para controle do Twitter, onde o usurio postará tweets e terá seguidores.') 
+    .setVersion('2.0')
+    .addTag('Auth') 
+    .addTag('Usuários') 
+    .addTag('Tweets') 
+    .addTag('Seguidores') 
+    .addTag('Seguindo') 
     .addTag('Categorias')
     .addTag('Categoria de Tweets')
     .addTag('Tweets Favoritos')
