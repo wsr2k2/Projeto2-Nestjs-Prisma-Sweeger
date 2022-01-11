@@ -47,47 +47,86 @@ generator client {
 }
 
 datasource db {
-  provider = "postgresql" //tipo de banco de dados utilizado
-  url      = env("DATABASE_URL") //busca do banco de dados através do .env
-}
-
-model Usuario {
-  id              Int   @default(autoincrement()) @id //id gerado automaticamente
-  nome            String //entrada de dados STRING
-  imagem          String //entrada de dados STRING
-  bio             String //entrada de dados STRING
-  nascimento      String //entrada de dados STRING
-  seguidores      Seguidores [] //lista de seguidores
-  seguindo        Seguindo [] //lista de seguindo
-  criado_em       DateTime @default(now()) @map(name: "created_at") //data gerada automaticamente
-  modificado_em   DateTime @updatedAt @map(name: "updated_at") //data gerada automaticamente
-  tweet           Tweet[] //lista de tweets
-}
-
-model Seguidores {
-  id              Int @default(autoincrement()) @id //id gerado automaticamente
-  idseguidor      Int //entrada de dados NUMBER
-  usuarios        Usuario [] //lista de usuarios
-  usuarioid       Int //entrada de dados NUMBER
-}
-
-model Seguindo {
-  id              Int   @default(autoincrement()) @id //id gerado automaticamente
-  idseguindo      Int //entrada de dados NUMBER
-  usuarios        Usuario [] //lista de usuarios
-  usuarioid       Int //entrada de dados NUMBER
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
 }
 
 model Tweet {
-  id              Int   @default(autoincrement()) @id //id gerado automaticamente
-  texto           String @db.VarChar(280) //entrada de dados STRING máximo 280 caracteres
-  emoji           String //entrada de dados STRING
-  data_postagem   DateTime @default(now()) @map(name: "created_at") //data gerada automaticamente
-  curtidas        Int //entrada de dados NUMBER
-  usuarios        Usuario [] //lista de usuarios
-  usuarioid       Int //entrada de dados NUMBER
+  id                    Int       @id @default(autoincrement())
+  texto                 String    
+  usuarioid             Int
+  usuario               Usuario   @relation(fields: [usuarioid], references: [id])
+  categorias            CategoriasDeTweet[]
+  tweetFavorito         TweetFavorito[]
+  criado_em             DateTime   @default(now()) @map("created_at")
+}
+
+model Categoria {
+  id                    Int         @id @default(autoincrement())
+  nome                  String
+  tweet                 CategoriasDeTweet[]
+  criado_em             DateTime    @default(now()) @map("created_at")
+  usuarioid             Int
+  usuario               Usuario   @relation(fields: [usuarioid], references: [id])
+}
+
+model Seguidores {
+  id                    Int         @id @default(autoincrement())
+  nome                  String
+  usuarioid             Int
+  usuario               Usuario     @relation(fields: [usuarioid], references: [id])
+  criado_em             DateTime @default(now()) @map("created_at")
+}
+
+model Seguindo {
+  id                    Int      @id @default(autoincrement())
+  nome                  String
+  usuarioid             Int
+  usuario               Usuario  @relation(fields: [usuarioid], references: [id])
+  criado_em             DateTime @default(now()) @map("created_at")
+}
+
+model Usuario {
+  id                    Int   @default(autoincrement()) @id
+  nome                  String
+  sobrenome             String
+  email                 String @unique
+  senha                 String
+  sobre                 String
+  nascimento            String
+  tweet                 Tweet[]
+  seguidores            Seguidores[]
+  seguindo              Seguindo[]
+  tweetFavorito         TweetFavorito[]
+  criado_em             DateTime @default(now()) @map(name: "created_at")
+  categoria             Categoria[]
+  categoriasdetweet     CategoriasDeTweet[]
+}
+
+model CategoriasDeTweet {
+  id                    Int   @default(autoincrement()) @id
+  tweet                 Tweet    @relation(fields: [tweetid], references: [id])
+  tweetid               Int
+  categoria             Categoria @relation(fields: [categoriaid], references: [id])
+  categoriaid           Int
+  criado_em             DateTime @default(now())
+  criado_por            String
+  usuarioid             Int
+  usuario               Usuario   @relation(fields: [usuarioid], references: [id])
+}
+
+model TweetFavorito {
+  id                    Int   @default(autoincrement()) @id
+  tweetid               Int
+  tweet                 Tweet    @relation(fields: [tweetid], references: [id])
+  usuarioid             Int
+  usuario               Usuario     @relation(fields: [usuarioid], references: [id])
+  criado_em             DateTime @default(now())
+  criado_por            String
 }
 ```
+
+
 
 ![alt .env](https://raw.githubusercontent.com/wsr2k2/Projeto2-Nestjs-Prisma-Sweeger/William/img/config%20env.png)
 
@@ -99,6 +138,9 @@ Após essa configuração, iremos criar nossos Resources, que serão os seguinte
 * Seguidores - comando: ``nest g resource seguidores`` utilizando transport layer com REST API e gerando o CRUD para nossa aplicação.
 * Seguindo - comando: ``nest g resource seguindo`` utilizando transport layer com REST API e gerando o CRUD para nossa aplicação.
 * Tweets - comando: ``nest g resource tweets`` utilizando transport layer com REST API e gerando o CRUD para nossa aplicação.
+* Tweets Favoritos - comando: ``nest g resource tweetsFavoritos`` utilizando transport layer com REST API e gerando o CRUD para nossa aplicação.
+* Categorias - comando: ``nest g resource categorias`` utilizando transport layer com REST API e gerando o CRUD para nossa aplicação.
+* Categorias de Tweets - comando: ``nest g resource categoriasDeTweets`` utilizando transport layer com REST API e gerando o CRUD para nossa aplicação.
 
 Após criarmos nossos Resources, iremos efetivamente criar essa estrutura em nossa banco de dados no PostgreSql com os seguintes comandos:
 
@@ -180,55 +222,83 @@ Com o token já criado, basta colar o mesmo logo após ``Bearer`` e clicar em ``
 ```javascript
 # USUARIOS
 {
-    "nome":"String",
-    "imagem":"String",
-    "bio":"String",
-    "nascimento":"String"
+    "nome":"STRING",
+    "sobrenome":"STRING",
+    "email":"STRING",
+    "senha":"STRING",
+    "sobre":"STRING",
+    "nascimento":"STRING"    
 }
 ```
 
 ```javascript
 # AUTH
 {
-    "nome":"String"
+"email":"STRING",
+"senha":"STRING"   
 }
 ```
 
 ```javascript
 # SEGUIDORES
 {
-    "idseguidor": Number,
-    "usuarioid": Number
+    "nome":"STRING",
+    "usuarioid": NUMBER
 }
 ```
 
 ```javascript
 # SEGUINDO
 {
-    "idseguindo": Number,
-    "usuarioid": Number
+    "nome":"STRING",
+    "usuarioid": NUMBER
 }
 ```
 
 ```javascript
 # TWEETS
 {
-    "texto":"String",
-    "emoji":"String",
-    "curtidas": Number,
-    "usuarioid": Number
+    "texto":"STRING",
+    "usuarioid": NUMBER
+}
+```
+
+```javascript
+# CATEGORIAS
+{
+    "nome":"STRING",
+    "usuarioid": NUMBER
+}
+```
+
+```javascript
+# CATEGORIAS DE TWEETS
+{
+    "tweetid": NUMBER,
+    "categoriaid": NUMBER,
+    "criado_por":"STRING",
+    "usuarioid": NUMBER
+
+```
+
+```javascript
+# TWEETS FAVORITOS
+{
+    "tweetid": NUMBER,
+    "usuarioid": NUMBER,
+    "criado_por":"STRING"
 }
 ```
 
 Para todos Resources foram criado as seguintes rotas: ``GET`` ``POST`` ``PATCH`` ``DELETE`` abaixo uma relação das mesmas:
 
-| ROTAS      | USUÁRIOS         | AUTH      | SEGUIDORES         | SEGUINDO         | TWEETS         | ESPERADO           |
-| ---------- | ---------------- | --------- | ------------------ | ---------------- | -------------- | ------------------ |
-| ``GET``    | ``/usuarios``    | ``/auth`` | ``/seguidores``    | ``/seguindo``    | ``/tweets``    | ``Lista todos``    |
-| ``GET``    | ``/usuarios/id`` | --------- | ``/seguidores/id`` | ``/seguindo/id`` | ``/tweets/id`` | ``Lista um item``  |
-| ``POST``   | ``/usuarios``    | ``/auth`` | ``/seguidores``    | ``/seguindo``    | ``/tweets``    | ``Cadastra novo``  |
-| ``PATCH``  | ``/usuarios/id`` | --------- | ``/seguidores/id`` | ``/seguindo/id`` | ``/tweets/id`` | ``Altera um item`` |
-| ``DELETE`` | ``/usuarios/id`` | --------- | ``/seguidores/id`` | ``/seguindo/id`` | ``/tweets/id`` | ``Exclui um item`` |
+| ROTAS      | USUÁRIOS         | AUTH      | SEGUIDORES         | SEGUINDO         | TWEETS         | CATEGORIAS         | CAT. TWEETS                | TWEET FAV               | ESPERADO           |
+| ---------- | ---------------- | --------- | ------------------ | ---------------- | -------------- | ------------------ | -------------------------- | ----------------------- | ------------------ |
+| ``GET``    | ``/usuarios``    | ``/auth`` | ``/seguidores``    | ``/seguindo``    | ``/tweets``    | ``/categorias``    | ``/categoriasdetweets``    | ``/tweetsfavoritos``    | ``Lista todos``    |
+| ``GET``    | ``/usuarios/id`` | --------- | ``/seguidores/id`` | ``/seguindo/id`` | ``/tweets/id`` | ``/categorias/id`` | ``/categoriasdetweets/id`` | ``/tweetsfavoritos/id`` | ``Lista um item``  |
+| ``POST``   | ``/usuarios``    | ``/auth`` | ``/seguidores``    | ``/seguindo``    | ``/tweets``    | ``/categorias``    | ``/categoriasdetweets``    | ``/tweetsfavoritos``    | ``Cadastra novo``  |
+| ``PATCH``  | ``/usuarios/id`` | --------- | ``/seguidores/id`` | ``/seguindo/id`` | ``/tweets/id`` | ---------          | ---------                  | ---------               | ``Altera um item`` |
+| ``DELETE`` | ``/usuarios/id`` | --------- | ``/seguidores/id`` | ``/seguindo/id`` | ``/tweets/id`` | ``/categorias/id`` | ``/categoriasdetweets/id`` | ``/tweetsfavoritos/id`` | ``Exclui um item`` |
 
 Agora iremos instalar o Swagger, um framework muito prático e rápido para testar os endpoints no navegador.
 
@@ -278,3 +348,17 @@ Cada um tendo os seguintes endpoints: (exemplo utilizado rota USUARIOS)
 
   ![alt DEL_usuarios](https://github.com/wsr2k2/Projeto2-Nestjs-Prisma-Sweeger/blob/main/img/del%20usuarios.png?raw=true)
 
+Para efeito de funcionamento de nossa aplicação, foi necessário criar um usuário padrão, antes de implementar a utilização do ``@UseGuard``, assim com esse usuário poderemos testar todos nossos endpoints e suas validações, dando maior segurança no armazenamento dos dados informados e seguindo assim o modelo estrutural.
+
+DADOS PARA GERAR O TOKEN DE PERMISSÃO DE CRIAÇÃO, ALTERAÇÃO E DELEÇÃO:
+
+```javascript
+{
+"email": "admin@admin.com",
+"senha": "admin"
+}
+```
+
+Após inserir esses dados, o usuário poderá gerar seu token de acesso, sendo que o mesmo tem duração de 60 segundos, após esse tempo, deve-se gerar um novo token para continuar a ter acesso às rotas mencionadas.
+
+Lembrando que para os endpoints ``GET`` não há necessidade de token.
