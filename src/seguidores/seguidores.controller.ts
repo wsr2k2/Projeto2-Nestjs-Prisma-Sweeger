@@ -1,8 +1,7 @@
 /* eslint-disable prettier/prettier */
-import { Controller, Get, Post, Body, Patch, Param, Delete, UseGuards } from '@nestjs/common';
+import { Controller, Get, Post, Body, Param, Delete, UseGuards } from '@nestjs/common';
 import { SeguidoresService } from './seguidores.service';
 import { CreateSeguidorDto } from './dto/create-seguidore.dto';
-import { UpdateSeguidorDto } from './dto/update-seguidore.dto';
 import { ApiTags } from '@nestjs/swagger';
 import { AuthGuard } from '@nestjs/passport';
 

@@ -2,10 +2,9 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 /* eslint-disable prettier/prettier */
 import { Injectable } from '@nestjs/common';
-import { Categoria, Prisma } from '@prisma/client';
+import { Categoria } from '@prisma/client';
 import { PrismaService } from 'src/prisma/prisma.service';
 import { CreateCategoriaDto } from './dto/create-categoria.dto';
-import { UpdateCategoriaDto } from './dto/update-categoria.dto';
 
 @Injectable()
 export class CategoriasService {

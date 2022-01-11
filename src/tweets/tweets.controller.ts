@@ -4,14 +4,12 @@ import {
   Get,
   Post,
   Body,
-  Patch,
   Param,
   Delete,
   UseGuards,
 } from '@nestjs/common';
 import { TweetsService } from './tweets.service';
 import { CreateTweetDto } from './dto/create-tweet.dto';
-import { UpdateTweetDto } from './dto/update-tweet.dto';
 import { ApiTags } from '@nestjs/swagger';
 import { AuthGuard } from '@nestjs/passport';
 
@@ -23,6 +21,7 @@ export class TweetsController {
   @Post()
   @UseGuards(AuthGuard('jwt'))
   create(@Body() createTweetDto: CreateTweetDto) {
+    console.log('chegou ate aqui')
     return this.tweetsService.create(createTweetDto);
   }
 

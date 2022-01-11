@@ -1,26 +1,28 @@
+/* eslint-disable prettier/prettier */
 import { Injectable } from '@nestjs/common';
+import { TweetFavorito } from '@prisma/client';
+import { PrismaService } from 'src/prisma/prisma.service';
 import { CreateTweetsfavoritoDto } from './dto/create-tweetsfavorito.dto';
-import { UpdateTweetsfavoritoDto } from './dto/update-tweetsfavorito.dto';
 
 @Injectable()
 export class TweetsfavoritosService {
-  create(createTweetsfavoritoDto: CreateTweetsfavoritoDto) {
-    return 'This action adds a new tweetsfavorito';
+  constructor(private prisma: PrismaService) {}
+
+  async create(createTweetsfavoritoDto: CreateTweetsfavoritoDto): Promise<TweetFavorito> {
+    return await this.prisma.tweetFavorito.create({ data: { ...createTweetsfavoritoDto },
+    });
   }
 
-  findAll() {
-    return `This action returns all tweetsfavoritos`;
+  async findAll(): Promise<TweetFavorito[]> {
+    return await this.prisma.tweetFavorito.findMany();
+    
   }
 
-  findOne(id: number) {
-    return `This action returns a #${id} tweetsfavorito`;
+  async findOne(id: number): Promise<TweetFavorito> {
+    return await this.prisma.tweetFavorito.findUnique({ where: { id }});
   }
 
-  update(id: number, updateTweetsfavoritoDto: UpdateTweetsfavoritoDto) {
-    return `This action updates a #${id} tweetsfavorito`;
-  }
-
-  remove(id: number) {
-    return `This action removes a #${id} tweetsfavorito`;
+  async remove(id: number): Promise<TweetFavorito> {
+    return await this.prisma.tweetFavorito.delete({ where: { id }})
   }
 }

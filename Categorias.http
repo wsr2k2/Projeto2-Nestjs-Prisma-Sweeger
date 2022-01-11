@@ -1,0 +1,21 @@
+# LISTAR TODAS categorias:
+GET http://localhost:3000/categorias
+###
+
+# LISTAR UMA categoria por ID:
+GET http://localhost:3000/categorias/1
+###
+
+# CADASTRAR uma nova categoria:
+POST http://localhost:3000/categorias
+Content-Type: application/json
+
+{
+    "nome":"STRING",
+    "usuarioid": NUMBER
+}
+###
+
+# EXCLUIR categoria por ID:
+DELETE http://localhost:3000/categorias/1
+###

@@ -1,7 +1,7 @@
 /* eslint-disable prettier/prettier */
 import { PartialType } from '@nestjs/mapped-types';
 import { ApiProperty } from '@nestjs/swagger';
-import { IsDate, IsEmail, IsNotEmpty, IsString } from 'class-validator';
+import { IsEmail, IsNotEmpty, IsString } from 'class-validator';
 import { CreateUsuarioDto } from './create-usuario.dto';
 
 export class UpdateUsuarioDto extends PartialType(CreateUsuarioDto) {

@@ -4,8 +4,6 @@ import { PassportStrategy } from "@nestjs/passport";
 import { ExtractJwt } from "passport-jwt";
 import { Strategy } from "passport-jwt";
 
-
-
 /* eslint-disable prettier/prettier */
 export interface JwtPayload {
   email: string;
