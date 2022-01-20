@@ -11,7 +11,7 @@ import {
 import { TweetsfavoritosService } from './tweetsfavoritos.service';
 import { CreateTweetsfavoritoDto } from './dto/create-tweetsfavorito.dto';
 import { AuthGuard } from '@nestjs/passport';
-import { ApiTags } from '@nestjs/swagger';
+import { ApiBearerAuth, ApiTags } from '@nestjs/swagger';
 
 @ApiTags('Tweets Favoritos')
 @Controller('tweetsfavoritos')
@@ -21,6 +21,7 @@ export class TweetsfavoritosController {
   ) {}
 
   @Post()
+  @ApiBearerAuth()
   @UseGuards(AuthGuard('jwt'))
   create(@Body() createTweetsfavoritoDto: CreateTweetsfavoritoDto) {
     return this.tweetsfavoritosService.create(createTweetsfavoritoDto);
@@ -38,6 +39,7 @@ export class TweetsfavoritosController {
   }
 
   @Delete(':id')
+  @ApiBearerAuth()
   @UseGuards(AuthGuard('jwt'))
   remove(@Param('id') id: string) {
     return this.tweetsfavoritosService.remove(+id);

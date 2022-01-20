@@ -11,7 +11,7 @@ import {
 import { AuthGuard } from '@nestjs/passport';
 import { CategoriasdetweetsService } from './categoriasdetweets.service';
 import { CreateCategoriasDeTweetDto } from './dto/create-categoriasdetweet.dto';
-import { ApiTags } from '@nestjs/swagger';
+import { ApiBearerAuth, ApiTags } from '@nestjs/swagger';
 
 @ApiTags('Categoria de Tweets')
 @Controller('categoriasdetweets')
@@ -21,6 +21,7 @@ export class CreateCategoriasDeTweetController {
   ) {}
   
   @Post()
+  @ApiBearerAuth()
   @UseGuards(AuthGuard('jwt'))
   create(@Body() createCategoriasdetweetDto: CreateCategoriasDeTweetDto) {
     return this.categoriasdetweetsService.create(createCategoriasdetweetDto);
@@ -36,6 +37,7 @@ export class CreateCategoriasDeTweetController {
     return this.categoriasdetweetsService.findOne(+id);
   }
   @Delete(':id')
+  @ApiBearerAuth()
   @UseGuards(AuthGuard('jwt'))
   remove(@Param('id') id: string) {
     return this.categoriasdetweetsService.remove(+id);
