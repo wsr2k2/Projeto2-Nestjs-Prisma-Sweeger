@@ -21,6 +21,7 @@ async function bootstrap() {
     .addTag('Categorias')
     .addTag('Categoria de Tweets')
     .addTag('Tweets Favoritos')
+    .addBearerAuth()
     .build();
   const document = SwaggerModule.createDocument(app, config);
   SwaggerModule.setup('', app, document);
