@@ -11,7 +11,7 @@ import {
 import { AuthGuard } from '@nestjs/passport';
 import { CategoriasService } from './categorias.service';
 import { CreateCategoriaDto } from './dto/create-categoria.dto';
-import { ApiTags } from '@nestjs/swagger';
+import { ApiBearerAuth, ApiTags } from '@nestjs/swagger';
 
 @ApiTags('Categorias')
 @Controller('categorias')
@@ -19,6 +19,7 @@ export class CategoriasController {
   constructor(private readonly categoriasService: CategoriasService) {}
 
   @Post()
+  @ApiBearerAuth()
   @UseGuards(AuthGuard('jwt'))
   create(@Body() createCategoriaDto: CreateCategoriaDto) {
     return this.categoriasService.create(createCategoriaDto);
@@ -35,6 +36,7 @@ export class CategoriasController {
   }
 
   @Delete(':id')
+  @ApiBearerAuth()
   @UseGuards(AuthGuard('jwt'))
   remove(@Param('id') id: string) {
     return this.categoriasService.remove(+id);

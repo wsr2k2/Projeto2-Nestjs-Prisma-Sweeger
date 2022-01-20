@@ -10,7 +10,7 @@ import {
 } from '@nestjs/common';
 import { TweetsService } from './tweets.service';
 import { CreateTweetDto } from './dto/create-tweet.dto';
-import { ApiTags } from '@nestjs/swagger';
+import { ApiBearerAuth, ApiTags } from '@nestjs/swagger';
 import { AuthGuard } from '@nestjs/passport';
 
 @ApiTags('Tweets')
@@ -19,6 +19,7 @@ export class TweetsController {
   constructor(private readonly tweetsService: TweetsService) {}
 
   @Post()
+  @ApiBearerAuth()
   @UseGuards(AuthGuard('jwt'))
   create(@Body() createTweetDto: CreateTweetDto) {
     console.log('chegou ate aqui')
@@ -36,6 +37,7 @@ export class TweetsController {
   }
   
   @Delete(':id')
+  @ApiBearerAuth()
   @UseGuards(AuthGuard('jwt'))
   remove(@Param('id') id: string) {
     return this.tweetsService.remove(+id);
